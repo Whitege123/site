@@ -1,0 +1,54 @@
+<table>
+  <thead>
+    <tr>
+    <th>用户注册</th>
+    </tr>
+  </tbody>
+  
+</table>
+<form action="/" method="post">
+   <!-- 文本输入框 -->
+    <label for="name">用户名称:</label>
+    <input type="text" id="name" name="name" required>
+
+    <br>
+
+    <!-- 密码输入框 -->
+    <label for="password">用户密码:</label>
+    <input type="password" id="password" name="password" required>
+
+    <br>
+
+    <!-- 单选按钮 -->
+    <label>用户性别:</label>
+    <input type="radio" id="male" name="gender" value="male" checked>
+    <label for="male">男</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">女</label>
+	
+	<br>
+	
+	 <!-- 复选框 -->
+	 <label>爱好:</label>
+    <input type="checkbox" id="subscribe" name="subscribe" checked>
+    <label for="subscribe">打游戏</label>
+	<input type="checkbox" id="subscribe" name="subscribe" checked>
+    <label for="subscribe">看动画</label>
+	<input type="checkbox" id="subscribe" name="subscribe" checked>
+    <label for="subscribe">绘画</label>
+	
+	<br>
+	
+	<!-- 文本输入框 -->
+    <label for="name">邮箱:</label>
+    <input type="text" id="name" name="name" required>
+	
+	<br>
+	
+	<form action="/upload" method="post" enctype="multipart/form-data">
+    <label for="avatar">选择头像:</label>
+    <input type="file" id="avatar" name="avatar" accept="image/*”>
+    <input type="submit" value="上传”>
+
+<form>
+
