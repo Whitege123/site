@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-1000px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function Balloon(color, diameter, speed, id) {
+            this.color = color;
+            this.diameter = diameter;
+            this.speed = speed;
+            this.id = id;
+
+            this.make = function() {
+                let dv = document.createElement('div');
+                dv.id = 'd' + this.id;
+                dv.style.cssText = `width: ${this.diameter}px;
+                 height: ${this.diameter}px; border-radius: ${this.diameter / 2}px; 
+                 background-color: ${this.color}; position: absolute;
+                  left: ${this.id * 50}px; bottom: 0px;`; 
+                document.body.appendChild(dv);
+            };
+
+            this.rise = function() {
+                let dv = document.getElementById('d' + this.id);
+                dv.style.animationName = "fly";
+                dv.style.animationDuration = ~~(700 / this.speed) + 's'; 
+                dv.style.animationTimingFunction = 'linear';
+                dv.style.animationIterationCount = 'infinite'; 
+                dv.style.animationDelay = Math.random() * 2 + 's'; 
+            };
+        }
+
+        for (let i = 0; i < 100; i++) {
+            let r = 'red'; 
+            let b = new Balloon(r, 50, 200, i);
+            b.make();
+            b.rise();
+        }
+    </script>
+</body>
+</html>
