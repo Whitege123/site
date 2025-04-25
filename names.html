@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elements of Computing Roster</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-top: 10px;
+        }
+        table {
+            margin: 20px auto;
+            background-color: #e5f5a8;
+            border-collapse: collapse;
+            width: 300px;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body onload="sortbyfirstname()">
+
+    <h1>Elements of Computing Roster</h1>
+
+    <table id="tbl">
+        <thead>
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Chai</td><td>Boyuan</td></tr>
+            <tr><td>Chen</td><td>Haohao</td></tr>
+            <tr><td>Chen</td><td>Zhiwen</td></tr>
+            <tr><td>Chen</td><td>Sukai</td></tr>
+            <tr><td>Chen</td><td>Yuer</td></tr>
+            <tr><td>Chen</td><td>Zhiyuan</td></tr>
+            <tr><td>Chen</td><td>Huai</td></tr>
+            <tr><td>Chen</td><td>Botao</td></tr>
+            <tr><td>Cui</td><td>Wenzhi</td></tr>
+            <tr><td>Ding</td><td>Wenqin</td></tr>
+            <tr><td>Fang</td><td>Beibei</td></tr>
+            <tr><td>Fang</td><td>Licheng</td></tr>
+            <tr><td>Fu</td><td>Haoting</td></tr>
+            <tr><td>Gao</td><td>Zimeng</td></tr>
+            <tr><td>Gao</td><td>Jiaxiang</td></tr>
+            <tr><td>Gu</td><td>Yifei</td></tr>
+            <tr><td>Gu</td><td>Xiangyu</td></tr>
+            <tr><td>Guo</td><td>Ruochenyan</td></tr>
+            <tr><td>Hu</td><td>Yubin</td></tr>
+            <tr><td>Hua</td><td>Zhiyu</td></tr>
+            <tr><td>Huang</td><td>Yihan</td></tr>
+            <tr><td>Huang</td><td>Hao</td></tr>
+            <tr><td>Huang</td><td>Haoyang</td></tr>
+            <tr><td>Jiang</td><td>Zijie</td></tr>
+            <tr><td>Jiang</td><td>Lai</td></tr>
+            <tr><td>Jiang</td><td>Lan</td></tr>
+            <tr><td>Jiang</td><td>Rui</td></tr>
+            <tr><td>Jin</td><td>Shouyuan</td></tr>
+            <tr><td>Jin</td><td>Pengzhan</td></tr>
+            <tr><td>Jingyuan</td><td>Wang</td></tr>
+            <tr><td>Li</td><td>Yiheng</td></tr>
+            <tr><td>Li</td><td>Congxi</td></tr>
+            <tr><td>Li</td><td>Xian</td></tr>
+            <tr><td>Li</td><td>Xiang</td></tr>
+            <tr><td>Li</td><td>Zimu</td></tr>
+            <tr><td>Liang</td><td>Xilong</td></tr>
+            <tr><td>Liao</td><td>Yuhuan</td></tr>
+            <tr><td>Liu</td><td>Binghui</td></tr>
+            <tr><td>Liu</td><td>Fanhao</td></tr>
+            <tr><td>Liu</td><td>Zhuang</td></tr>
+            <tr><td>Liu</td><td>Xinyi</td></tr>
+            <tr><td>Long</td><td>Wenjing</td></tr>
+            <tr><td>Lou</td><td>Jinchao</td></tr>
+            <tr><td>Lou</td><td>Zhongyue</td></tr>
+            <tr><td>Lu</td><td>Likai</td></tr>
+            <tr><td>Lu</td><td>Xiangwei</td></tr>
+            <tr><td>Luo</td><td>Yiqin</td></tr>
+            <tr><td>Lv</td><td>Xinyi</td></tr>
+            <tr><td>Ma</td><td>Kailin</td></tr>
+            <tr><td>Mao</td><td>Yuyan</td></tr>
+            <tr><td>Ou</td><td>Wenyu</td></tr>
+            <tr><td>Quan</td><td>Zijian</td></tr>
+            <tr><td>Shen</td><td>Yuhao</td></tr>
+            <tr><td>Shen</td><td>Siyao</td></tr>
+            <tr><td>Tang</td><td>Jinjing</td></tr>
+            <tr><td>Tang</td><td>Yongyuan</td></tr>
+            <tr><td>Wan</td><td>Lihao</td></tr>
+            <tr><td>Wang</td><td>Zihang</td></tr>
+            <tr><td>Wang</td><td>Haixin</td></tr>
+            <tr><td>Wang</td><td>Haokun</td></tr>
+            <tr><td>Wang</td><td>Peiqi</td></tr>
+            <tr><td>Wang</td><td>Jiadian</td></tr>
+            <tr><td>Wang</td><td>Mengyao</td></tr>
+            <tr><td>Wang</td><td>Jiahao</td></tr>
+            <tr><td>Wei</td><td>Zelin</td></tr>
+            <tr><td>Wu</td><td>Han</td></tr>
+            <tr><td>Wu</td><td>Shuang</td></tr>
+            <tr><td>Wu</td><td>Zejia</td></tr>
+            <tr><td>Wu</td><td>Xuyang</td></tr>
+            <tr><td>Xia</td><td>Zimeng</td></tr>
+            <tr><td>Xiang</td><td>Yuze</td></tr>
+            <tr><td>Xiao</td><td>Kailin</td></tr>
+            <tr><td>Xie</td><td>Yuyang</td></tr>
+            <tr><td>Xie</td><td>Zhikun</td></tr>
+            <tr><td>Xu</td><td>Daikai</td></tr>
+            <tr><td>Xu</td><td>Qingyi</td></tr>
+            <tr><td>Yan</td><td>Yuzan</td></tr>
+            <tr><td>Yan</td><td>Chuanqi</td></tr>
+            <tr><td>Yang</td><td>Yaoming</td></tr>
+            <tr><td>Yang</td><td>Miaomiao</td></tr>
+            <tr><td>Ye</td><td>Zishan</td></tr>
+            <tr><td>Ye</td><td>Shiyu</td></tr>
+            <tr><td>Zeng</td><td>Jinnuo</td></tr>
+            <tr><td>Zhan</td><td>Jie</td></tr>
+            <tr><td>Zhang</td><td>Yaozeqi</td></tr>
+            <tr><td>Zhang</td><td>Haowen</td></tr>
+            <tr><td>Zhang</td><td>Yuhan</td></tr>
+            <tr><td>Zhang</td><td>Shiyu</td></tr>
+            <tr><td>Zhao</td><td>Haoxiang</td></tr>
+            <tr><td>Zhao</td><td>Yu</td></tr>
+            <tr><td>Zhou</td><td>Hao</td></tr>
+            <tr><td>Zhou</td><td>Yufan</td></tr>
+            <tr><td>Zhu</td><td>Zhiqing</td></tr>
+            <tr><td>Zhuo</td><td>Yiyuan</td></tr>
+        </tbody>
+    </table>
+
+    <script>
+        function sortbyfirstname() {
+            let tbl = document.getElementById("tbl");
+            let rows = Array.from(tbl.rows).slice(1);
+            rows.sort((a, b) => a.cells[1].innerHTML.localeCompare(b.cells[1].innerHTML));
+            for (let row of rows) {
+                tbl.appendChild(row);
+            }
+        }
+    </script>
+</body>
+</html>
