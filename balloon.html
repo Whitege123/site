@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flying Balloons</title>
+    <style>
+        body {
+            background-color: skyblue;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            position: relative;
+        }
+        .balloon {
+            position: absolute;
+            bottom: 0;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+// 颜色池，固定为7种
+const colors = ['red', 'orange', 'yellow', 'green', 'black', 'blue', 'purple'];
+
+// 创建一个气球
+function createBalloon() {
+    const balloon = document.createElement('div');
+    balloon.className = 'balloon';
+    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    balloon.style.width = '30px';
+    balloon.style.height = '40px';
+    balloon.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+    
+    // 设定每个气球的爆炸高度（随机在页面高的一半到顶部之间）
+    balloon.burstHeight = Math.random() * (window.innerHeight / 2) + 50;
+
+    document.body.appendChild(balloon);
+    riseBalloon(balloon);
+}
+
+// 让气球上升并变大
+function riseBalloon(balloon) {
+    let y = 0;
+    let baseWidth = 30;
+    let baseHeight = 40;
+    const speed = Math.random() * 2 + 1; // 每个气球上升速度不同
+
+    const interval = setInterval(() => {
+        y += speed;
+        balloon.style.bottom = y + 'px';
+
+        // 气球随着上升逐渐变大
+        balloon.style.width = baseWidth + y * 0.05 + 'px';
+        balloon.style.height = baseHeight + y * 0.05 + 'px';
+
+        // 当气球达到设定的爆炸高度时，爆炸（移除）
+        if (y >= balloon.burstHeight) {
+            setTimeout(() => {
+                balloon.remove();
+            }, Math.random() * 1000); // 随机延迟爆炸，避免同时爆炸
+            clearInterval(interval);
+        }
+
+        // 防止飞出屏幕没爆
+        if (y > window.innerHeight) {
+            balloon.remove();
+            clearInterval(interval);
+        }
+
+    }, 30);
+}
+
+// 每隔一段时间生成新的气球
+setInterval(createBalloon, 500);
+
+// 页面一开始就生成几个气球
+for (let i = 0; i < 5; i++) {
+    createBalloon();
+}
+</script>
+
+</body>
+</html>
