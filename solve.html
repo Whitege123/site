@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>二次方程求解器</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 500px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        .note {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <button id="solveBtn">求解一元二次方程</button>
+    <div class="note">打开控制台 (F12) 查看详细输出</div>
+
+    <script>
+        (function() {
+            function solve() {
+                let rawA = prompt("系数 a (a > 0):");
+                let rawB = prompt("系数 b:");
+                let rawC = prompt("系数 c:");
+                
+                if (rawA === null || rawB === null || rawC === null) {
+                    alert("已取消输入");
+                    console.log("用户取消输入");
+                    return;
+                }
+                
+                const a = parseFloat(rawA);
+                const b = parseFloat(rawB);
+                const c = parseFloat(rawC);
+                
+                console.log(`输入: a = ${a}, b = ${b}, c = ${c}`);
+                
+                if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                    alert("错误：请输入有效的数字");
+                    console.error("无效数字");
+                    return;
+                }
+                
+                const delta = b * b - 4 * a * c;
+                const sqrtDelta = Math.sqrt(delta);
+                const x1 = (-b + sqrtDelta) / (2 * a);
+                const x2 = (-b - sqrtDelta) / (2 * a);
+                
+                alert(`方程 ${a}x² + ${b}x + ${c} = 0\nx₁ = ${x1}\nx₂ = ${x2}`);
+                console.log(`结果: x₁ = ${x1}, x₂ = ${x2}, Δ = ${delta}`);
+            }
+            
+            document.getElementById("solveBtn").addEventListener("click", solve);
+        })();
+    </script>
+</body>
+</html>
