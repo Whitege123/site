@@ -1,0 +1,206 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #87CEEB, #E6E6FA);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* 控制面板 */
+.control-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.disk-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#diskSlider {
+    width: 120px;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.move-counter {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 3D 游戏舞台 */
+.stage {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-bottom: 20px;
+    perspective: 1000px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* 3D 柱子 */
+.peg {
+    position: relative;
+    width: 20px;
+    height: 250px;
+    background: linear-gradient(to bottom, #8B4513, #654321);
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    transform: rotateX(30deg);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.peg::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 16px;
+    background: #A0522D;
+    border-radius: 50%;
+}
+
+/* 3D 圆盘 */
+.disk {
+    height: 28px;
+    border-radius: 12px;
+    margin: 2px 0;
+    transform-style: preserve-3d;
+    transform: rotateX(30deg) translateZ(5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    position: relative;
+    transition: 0.2s;
+}
+
+.disk::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+}
+
+/* 圆盘颜色（彩虹） */
+.disk-1 { width: 180px; background: linear-gradient(to bottom, #FF6B6B, #FF5252); }
+.disk-2 { width: 160px; background: linear-gradient(to bottom, #FFB74D, #FFA726); }
+.disk-3 { width: 140px; background: linear-gradient(to bottom, #FFF176, #FFEB3B); }
+.disk-4 { width: 120px; background: linear-gradient(to bottom, #81C784, #4CAF50); }
+.disk-5 { width: 100px; background: linear-gradient(to bottom, #4FC3F7, #2196F3); }
+.disk-6 { width: 80px; background: linear-gradient(to bottom, #7986CB, #5C6BC0); }
+.disk-7 { width: 60px; background: linear-gradient(to bottom, #BA68C8, #AB47BC); }
+.disk-8 { width: 40px; background: linear-gradient(to bottom, #F06292, #E91E63); }
+
+/* 选中效果 */
+.disk.selected {
+    transform: rotateX(30deg) translateZ(20px);
+    box-shadow: 0 0 20px #FFEB3B;
+}
+
+/* 动画 */
+@keyframes shakeWarning {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+@keyframes glowWin {
+    0% { box-shadow: 0 0 10px gold; transform: scale(1); }
+    50% { box-shadow: 0 0 30px gold; transform: scale(1.05); }
+    100% { box-shadow: 0 0 10px gold; transform: scale(1); }
+}
+
+@keyframes diskFloat {
+    0% { transform: rotateX(30deg) translateZ(5px); }
+    50% { transform: rotateX(30deg) translateZ(15px); }
+    100% { transform: rotateX(30deg) translateZ(5px); }
+}
+
+/* 提示框 */
+.warning, .victory {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.warning {
+    background: #FFEBEE;
+    color: #D32F2F;
+    animation: shakeWarning 0.5s;
+}
+
+.victory {
+    background: #E8F5E8;
+    color: #2E7D32;
+    animation: glowWin 1s infinite alternate;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+    .stage { height: 350px; }
+    .peg { height: 200px; }
+    .disk-1 { width: 140px; }
+}

@@ -1,1 +1,39 @@
-my first page
+!DOCTYPE html
+html lang=zh-CN
+head
+    meta charset=UTF-8
+    meta name=viewport content=width=device-width, initial-scale=1.0
+    title3D 河内塔 - 儿童益智游戏title
+    link rel=stylesheet href=style.css
+head
+body
+    div class=game-container
+        h13D 河内塔h1
+        
+        !-- 控制面板 --
+        div class=control-panel
+            div class=disk-control
+                label圆盘数量：label
+                input type=range id=diskSlider min=3 max=8 value=3
+                span id=diskCount3span
+            div
+            div class=move-counter步数：span id=moveCount0spandiv
+            button id=resetBtn重置游戏button
+            button id=autoSolveBtn自动解题button
+        div
+
+        !-- 3D游戏舞台 --
+        div class=stage
+            div class=peg data-peg=0div
+            div class=peg data-peg=1div
+            div class=peg data-peg=2div
+        div
+
+        !-- 警告与胜利提示 --
+        div id=warning class=warning hidden无效操作！不能把大圆盘放在小圆盘上div
+        div id=victory class=victory hidden🎉 恭喜通关！你太棒了 🎉div
+    div
+
+    script src=script.jsscript
+body
+html
